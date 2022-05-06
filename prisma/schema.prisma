@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Cria tabela no banco de dados
+model Feedback {
+
+  // @id define primary key e cria chave automaticamente
+  id String @id @default(uuid())
+
+  type       String
+  comment    String
+  screenshot String?
+
+  // define o nome da tabela como feedbacks
+  @@map("feedbacks")
+}
+
+// npx prisma migrate dev cria a migration da tabela
+
+// npx prisma studio abre o banco no browser
